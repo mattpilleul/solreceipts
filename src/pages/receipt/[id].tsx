@@ -43,11 +43,8 @@ export default function ReceiptPage() {
       try {
         const receiptAccount = await program?.account?.receipt?.fetch(new PublicKey(id));
 
-        console.log("Receipt Account:", receiptAccount);
-
         setReceipt(receiptAccount);
       } catch (err) {
-        console.error("Failed to load receipt", err);
         setError("Receipt not found or failed to load.");
       } finally {
         setLoading(false);

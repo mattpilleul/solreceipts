@@ -61,8 +61,6 @@ export default function CreateReceipt() {
       const payer = tx.transaction.message.accountKeys[0].pubkey.toBase58();
       const instr = tx.transaction.message.instructions[0];
 
-      console.log("🧾 Raw instruction[0]:", instr);
-
       let to = "-";
       let amount = "-";
 
@@ -78,7 +76,6 @@ export default function CreateReceipt() {
       setPreview({ payer, to, amount, date: time });
       setStatus("");
     } catch (err) {
-      console.error(err);
       setStatus("An error occurred while reading the transaction.");
     }
   };
@@ -109,7 +106,6 @@ export default function CreateReceipt() {
 
       router.push(`/receipt/${receiptKeypair.publicKey.toBase58()}`);
     } catch (err) {
-      console.error("createReceipt error:", err);
       setStatus("An error occurred while creating the receipt.");
     }
   };

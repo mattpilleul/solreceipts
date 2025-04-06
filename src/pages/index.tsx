@@ -41,7 +41,6 @@ export default function Home() {
         const cleaned = parsed.filter(({ tx }) => tx !== null);
         setTxs(cleaned);
       } catch (error) {
-        console.error("Error fetching transactions:", error);
       } finally {
         setLoading(false);
       }
@@ -99,10 +98,6 @@ export default function Home() {
     return receipts.find((r) => {
       const hash = r.account.txHash?.trim();
       const match = hash === sig;
-      console.log("🔍 Checking receipt match:");
-      console.log("Decoded txHash from receipt:", hash);
-      console.log("Current tx we're mapping over:", sig);
-      console.log("Match:", match);
       return match;
     });
   };
@@ -163,8 +158,20 @@ export default function Home() {
                     {typeAvatar}
                   </div>
                   <div className="flex flex-col text-sm text-gray-800 flex-1 min-w-0">
-                    <p className="font-bold text-gray-900 truncate">
-                      Tx: <span className="font-mono">{signature.slice(0, 16)}...</span>
+                    <p className="font-bold text-gray-900 truncate flex items-center gap-1">
+                      Tx:
+                      <span className="font-mono">
+                        {signature.slice(0, 16)}...
+                      </span>
+                      <a
+                        href={`https://solscan.io/tx/${signature}?cluster=devnet`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-500 hover:scale-105 transition-transform"
+                        title="View on Solscan"
+                      >
+                        🔗
+                      </a>
                     </p>
                     {tx.transaction.message.instructions[0]?.programId?.toBase58() === "xoDRdJoAhZ4Vzqzh9vRFr5U5yMH2H4emUVqwfvLSKMb" ? (
                       <p className="text-sm text-purple-700 font-medium">This transaction created a receipt.</p>
