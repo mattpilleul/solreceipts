@@ -41,7 +41,7 @@ export default function ReceiptPage() {
       setError("");
 
       try {
-        const receiptAccount = await program?.account.receipt.fetch(new PublicKey(id));
+        const receiptAccount = await program?.account?.receipt?.fetch(new PublicKey(id));
 
         console.log("Receipt Account:", receiptAccount);
 
