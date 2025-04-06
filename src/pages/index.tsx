@@ -168,9 +168,12 @@ export default function Home() {
                     ) : (
                       <>
                         <p className="text-gray-500 truncate text-sm">
-                          Destination: {destination.slice(0, 18)}...
+                          Destination:{" "}
+                          {destination && destination !== "-" ? destination.slice(0, 18) + "..." : "Unavailable"}
                         </p>
-                        <p className="text-gray-500 text-sm">Amount: {amount}</p>
+                        <p className="text-gray-500 text-sm">
+                          Amount: {amount && amount !== "-" ? amount : "Unavailable"}
+                        </p>
                       </>
                     )}
                   </div>
