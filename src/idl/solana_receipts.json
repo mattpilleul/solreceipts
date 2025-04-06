@@ -1,0 +1,143 @@
+{
+  "address": "xoDRdJoAhZ4Vzqzh9vRFr5U5yMH2H4emUVqwfvLSKMb",
+  "metadata": {
+    "name": "solana_receipts",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_receipt",
+      "discriminator": [
+        187,
+        57,
+        104,
+        13,
+        15,
+        1,
+        219,
+        99
+      ],
+      "accounts": [
+        {
+          "name": "receipt",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "payer",
+          "type": "pubkey"
+        },
+        {
+          "name": "tx_hash",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "files",
+          "type": {
+            "vec": {
+              "defined": {
+                "name": "FileMeta"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Receipt",
+      "discriminator": [
+        39,
+        154,
+        73,
+        106,
+        80,
+        102,
+        145,
+        153
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "FileMeta",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "hash",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Receipt",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "tx_hash",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "files",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "FileMeta"
+                }
+              }
+            }
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ]
+}
