@@ -120,8 +120,11 @@ export default function Home() {
           </h1>
           <div className="flex items-center gap-4">
             <Link href="/create">
-              <button className="inline-flex items-center gap-2 rounded-full bg-[#512DA8] text-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-[#381f75] cursor-pointer transition">
-                <Plus className="w-4 h-4" /> Add Transaction
+              <button
+                className="inline-flex items-center justify-center bg-[#512DA8] text-white text-sm font-medium shadow-sm hover:bg-[#381f75] transition
+                       rounded-full sm:gap-2 px-3 py-3 sm:px-4 sm:py-2 w-10 h-10 sm:w-auto sm:h-auto cursor-pointer">
+                <Plus className="w-4 h-4" />
+                <span className="hidden sm:inline">Add Transaction</span>
               </button>
             </Link>
             <WalletMultiButton className="!bg-[#512DA8] !text-white !rounded-full !px-6 !py-2 !hover:bg-[#381f75] transition" />
